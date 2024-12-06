@@ -9,8 +9,6 @@
 // @match        https://zhuanlan.zhihu.com/*
 // @icon         https://www.google.com/s2/favicons?domain=zhihu.com
 // @grant        none
-// @downloadURL https://update.greasyfork.org/scripts/519945/Zhihu%20Link%20Archiver.user.js
-// @updateURL https://update.greasyfork.org/scripts/519945/Zhihu%20Link%20Archiver.meta.js
 // ==/UserScript==
 
 function createArchiveZhihuButton(link) {
