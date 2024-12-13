@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Zhihu Link Archiver
 // @namespace    http://tampermonkey.net/
-// @version      0.2
+// @version      0.3
 // @author       Jarrett Ye
 // @license      MIT
 // @description  Adds a button beside Zhihu answer/article links to archive them to Archive.org
@@ -69,6 +69,17 @@ function createArchiveZhihuButton(link) {
                 link = item.querySelector('.ContentItem-time a');
             }
             const actions = item.querySelector('.ContentItem-actions');
+            actions.insertBefore(createArchiveZhihuButton(link.href), actions.firstChild.nextSibling);
+        });
+
+        const pinItems = target.querySelectorAll('.ContentItem.PinItem');
+        pinItems.forEach(item => {
+            if (item.querySelector('.archive-zhihu-button')) return;
+            let link = item.querySelector('.ContentItem-title a');
+            if (!link) {
+                link = item.querySelector('.ContentItem-time a');
+            }
+            const actions = item.querySelectorAll('.ContentItem-actions')[1];
             actions.insertBefore(createArchiveZhihuButton(link.href), actions.firstChild.nextSibling);
         });
     }
